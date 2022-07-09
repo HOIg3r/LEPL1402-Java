@@ -2,7 +2,7 @@ public class StringUtils {
 
 
     /**
-     * Split a strin according to a delimiter
+     * Split a string according to a delimiter
      *
      * @param str The string to split
      * @param delimiter The delimiter
@@ -12,7 +12,13 @@ public class StringUtils {
      *          return an array of size 1 with the string at element 0
      */
     public static String [] split(String str, char delimiter){
+        if(!str.contains(Character.toString(delimiter))){
+            return new String[]{str};
+        }
+        String[] output = new String[];
+        for (int i = 0; i < str.length()-1; i++) {
 
+        }
     }
 
 
@@ -26,7 +32,15 @@ public class StringUtils {
      *          in str
      */
     public static int indexOf(String str, String sub){
-
+        if (!str.contains(sub)){
+            return -1;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            if(str.substring(i).startsWith(sub)){
+                return i;
+            }
+        }
+        return -1;
     }
 
 
@@ -38,7 +52,7 @@ public class StringUtils {
      *          character put to lower case.
      */
     public static String toLowerCase(String str){
-
+        return str.toLowerCase();
     }
 
 
@@ -53,7 +67,12 @@ public class StringUtils {
      * @return true if str is a palyndrome, false otherwise
      */
     public static boolean palindrome(String str){
-    
+        for (int i = 0; i < str.length(); i++) {
+            if(str.charAt(i) != str.charAt(str.length()-i-1)){
+                return false;
+            }
+        }
+        return true;
     }
 
 
