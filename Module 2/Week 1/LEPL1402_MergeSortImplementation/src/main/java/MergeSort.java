@@ -14,7 +14,15 @@ public class MergeSort {
      * aux = [1, 3, 4, 5]
      */
     public static void merge(int[] a, int[] aux, int lo, int mid, int hi) {
-        // TODO By student
+        for (int i = lo; i < hi; i++) {
+            if (a[lo] <= a[hi]){
+                aux[i] = a[lo];
+                lo++;
+            } else if (a[lo] > a[hi]) {
+                aux[i] = a[hi];
+                hi--;
+            }       
+        }
     }
 
     /**
