@@ -15,13 +15,7 @@ public class MergeSort {
      */
     public static void merge(int[] a, int[] aux, int lo, int mid, int hi) {
         for (int i = lo; i < hi; i++) {
-            if (a[lo] <= a[hi]){
-                aux[i] = a[lo];
-                lo++;
-            } else if (a[lo] > a[hi]) {
-                aux[i] = a[hi];
-                hi--;
-            }       
+            
         }
     }
 
