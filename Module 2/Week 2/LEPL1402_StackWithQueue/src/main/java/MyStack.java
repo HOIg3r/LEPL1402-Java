@@ -17,6 +17,7 @@ public class MyStack<E> {
      * @param elem the Element to push
      */
     public void push(E elem) {
+        this.queue.add(elem);
     }
 
     /**
@@ -25,7 +26,7 @@ public class MyStack<E> {
      * @return The element at the top of the stack
      */
     public E pop() {
-        return null;
+        return this.queue.remove(this.queue.size()-1);
     }
 
     /**
@@ -34,7 +35,9 @@ public class MyStack<E> {
      * @return The element at the top of the stack
      */
     public E peek() {
-        return null;
+        E tmp = pop();
+        push(tmp);
+        return tmp;
     }
 
     /**
@@ -44,7 +47,7 @@ public class MyStack<E> {
      *         and false otherwise
      */
     public boolean empty() {
-        return false;
+        return this.queue.isEmpty()
     }
 
 }
