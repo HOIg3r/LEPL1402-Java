@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class TowerOfHanoi{
+public class TowerOfHanoi {
 
     /**
      * Solve the Tower of Hanoi puzzle
@@ -11,6 +11,11 @@ public class TowerOfHanoi{
      * @param c The tower to which we want to move the disks
      */
     public static void towerOfHanoi(int n, Stack<Disk> a, Stack<Disk> b, Stack<Disk> c) {
+        if (n != 0) {
+            towerOfHanoi(n - 1, a, c, b);
+            c.add(a.pop());
+            towerOfHanoi(n - 1, b, a, c);
+        }
     }
 
 }
