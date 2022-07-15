@@ -11,7 +11,26 @@ public class MaximumSubArray {
      * For example for the array [-2,1,-3,4,-1,2,1,-5,4] your method should return [6, 3, 6]
      */
     public static int[] maxSubArray(int[] a){
-        // TODO: students
-        return null;
+        int count = Integer.MIN_VALUE;
+        int bestEnd = 0;
+        int start = 0;
+        int end = 0;
+        int s = 0;
+
+
+        for (int i = 0; i < a.length; i++) {
+            bestEnd += a[i];
+
+            if(count < bestEnd){
+                count = bestEnd;
+                start = s;
+                end = i;
+            }
+            if (bestEnd < 0){
+                bestEnd = 0;
+                s =i+1;
+            }
+        }
+        return new int[]{count, start,end};
     }
 }
