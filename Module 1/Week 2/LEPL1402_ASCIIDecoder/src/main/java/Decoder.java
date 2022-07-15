@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Decoder {
 
@@ -17,7 +18,36 @@ public class Decoder {
      * You should NEVER return null or an array containing null
      */
     public static String [] decode(int[] forbidden, String[][] sentences){
-        
+        ArrayList<StringBuilder> list = new ArrayList<>();
+        StringBuilder builder = new StringBuilder();
+
+        for (String[] sentence: sentences) {
+            for (String word: sentence) {
+                boolean isForbidden = false;
+                if (forbidden != null){
+                    for (int forbid:forbidden) {
+                        if (forbid == Integer.parseInt(word)){
+                            isForbidden = true;
+                        }
+                    }
+                }
+                if (!isForbidden){
+                    builder.append((char) Integer.parseInt(word));
+                }
+            }
+            list.add(builder);
+            builder = new StringBuilder();
+        }
+
+        String[] output = new String[list.size()];
+
+        for (int i = 0; i < list.size(); i++) {
+            output[i] = String.valueOf(list.get(i));
+        }
+
+        return output;
+
+
     }
 
 }
