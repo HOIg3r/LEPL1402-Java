@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Locale;
+
 public class Anagram {
 
     /**
@@ -18,8 +21,18 @@ public class Anagram {
      * letter.
      **/
     public static int[] countAlphabet(String s) {
-        // TODO
-        return null;
+        int[] output = new int[26];
+        for (int i = 0; i < 26; i++) {
+            output[i] = 0;
+        }
+        s = s.toLowerCase();
+        for (int i = 0; i < s.length(); i++) {
+            if( (int) s.charAt(i) <= 122 && (int) s.charAt(i) >= 97 ){
+                int index = ((int) s.charAt(i)) - 97;
+                output[index]++;
+            }
+        }
+        return output;
     }
 
 
@@ -31,9 +44,7 @@ public class Anagram {
      * @param s2 The second string.
      * @return <code>true</code> iff. the two strings are anagrams.
      **/
-    public static boolean isAnagram(String s1,
-                                    String s2) {
-        // TODO
-        return false;
+    public static boolean isAnagram(String s1,String s2) {
+        return Arrays.equals(countAlphabet(s1), countAlphabet(s2));
     }
 }
