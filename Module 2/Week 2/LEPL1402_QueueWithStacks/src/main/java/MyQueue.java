@@ -23,7 +23,28 @@ public class MyQueue<E> {
      * @param elem The element to add
      */
     public void enqueue(E elem) {
-        // TODO
+        if(this.front == null){
+            s1.add(elem);
+            front = elem;
+        }else {
+            if(!s1.isEmpty() && s2.isEmpty()){
+                while (!s1.isEmpty()){
+                    s2.add(s1.pop());
+                }
+                s2.add(elem);
+                while (!s2.isEmpty()){
+                    s1.add(s2.pop());
+                }
+            } else if (!s2.isEmpty() && s1.isEmpty()) {
+                s2.add(elem);
+                while (!s2.isEmpty()){
+                    s1.add(s2.pop());
+                }
+            }
+            else{
+                throw new RuntimeException();
+            }
+        }
     }
 
     /**
@@ -33,8 +54,10 @@ public class MyQueue<E> {
      * @throws NoSuchElementException if the queue is empty
      */
     public E dequeue() {
-        // TODO
-        return null;
+        if(s1.isEmpty() && s2.isEmpty()){
+            throw new NoSuchElementException("The Queue is empty");
+        }
+        return s1.pop();
     }
 
     /**
@@ -44,16 +67,19 @@ public class MyQueue<E> {
      * @throws NoSuchElementException if the queue is empty
      */
     public E peek() {
-        // TODO
-        return null;
+        if(s1.isEmpty() && s2.isEmpty()){
+            throw new NoSuchElementException("The Queue is empty");
+        }
+        E tmp = s1.pop();
+        s1.add(tmp);
+        return tmp;
     }
 
     /**
      * @return true if the queue is empty
      */
     public boolean empty() {
-        // TODO
-        return false;
+        return s1.isEmpty() && s2.isEmpty();
     }
 
 }
