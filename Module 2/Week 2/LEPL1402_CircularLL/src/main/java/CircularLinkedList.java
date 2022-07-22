@@ -59,7 +59,17 @@ public class CircularLinkedList<Item> {
      * @param item The element to add at the end of the list
      */
     public void enqueue(Item item) {
-        // TODO
+        ListNode<Item> node = new ListNode<>(item);
+        if(this.getFirst() == null){
+            node.setNext(node);
+            first = node;
+            last = node;
+        }else {
+            node.setNext(this.getFirst());
+            last.setNext(node);
+            last = node;
+        }
+        size++;
     }
 
     /**
@@ -71,8 +81,50 @@ public class CircularLinkedList<Item> {
      *         of the list
      */
     public Item remove(int index) {
-        // TODO
-        return null;
+        if(index < 0 || index > this.size() || this.isEmpty()){
+            throw new IndexOutOfBoundsException();
+        }
+        ListNode<Item> current = first;
+
+        if(size() == 1){
+            Item node = first.getItem();
+            first = null;
+            last = null;
+            size--;
+            return node;
+        }
+
+        if (index == 0){
+            last.setNext(first.getNext());
+            Item node = first.getItem();
+            first.setNext(null);
+            first = last.getNext();
+            size--;
+            return node;
+        }
+
+        for (int i = 0; i < index-1; i++) {
+            current = current.getNext();
+        }
+
+        if(current.getNext() == getLast()){
+            current.setNext(first);
+            Item node = getLast().getItem();
+            last = current;
+            size--;
+            return node;
+        }else {
+            current.setNext(current.getNext().getNext());
+            Item node = current.getNext().getItem();
+            size--;
+            return node;
+        }
+
+
+
+
+
+
     }
 
     /**
