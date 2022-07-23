@@ -8,7 +8,27 @@ public class Tree {
 
     @Override
     public boolean equals(Object o){
-        // YOUR CODE HERE
+        if(o == null){
+            return false;
+        }
+
+        if(this.getClass() != o.getClass()){
+            return false;
+        }
+
+        if(this.root == null && ((Tree) o).root == null){
+            return true;
+        }
+
+        if(this.root == null || ((Tree) o).root == null){
+            return false;
+        }
+
+
+        if(this.root.val == ((Tree) o).root.val){
+            return this.root.right.equals(((Tree) o).root.right) && this.root.left.equals(((Tree) o).root.left);
+        }
+        return false;
     }
 
 }

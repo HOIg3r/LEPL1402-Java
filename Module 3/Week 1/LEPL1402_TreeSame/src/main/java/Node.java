@@ -14,6 +14,17 @@ public class Node {
 
     @Override
     public boolean equals(Object o){
-        // YOUR CODE HERE
+        if(this.getClass() != o.getClass()){
+            return false;
+        }
+
+        if (this.isLeaf() && ((Node) o).isLeaf()){
+            return this.val == ((Node) o).val;
+        }
+
+        if(!this.isLeaf() && !((Node) o).isLeaf()){
+            return this.right.equals(((Node) o).right) && this.left.equals(((Node) o).left);
+        }
+        return false;
     }
 }
