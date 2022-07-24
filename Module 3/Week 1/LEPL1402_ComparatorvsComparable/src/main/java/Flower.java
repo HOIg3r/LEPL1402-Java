@@ -22,6 +22,6 @@ public class Flower extends Plant implements Comparable<Plant>{
      */
     @Override
     public int compareTo(Plant o) {
-        //TODO by student
+        return super.compareTo(o);
     }
 }

@@ -1,9 +1,9 @@
-public class Plant implements Comparable<Plant>{
+public class Plant implements Comparable<Plant> {
 
     private String name;
     private int age;
 
-    public Plant(String name, int age){
+    public Plant(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -25,7 +25,9 @@ public class Plant implements Comparable<Plant>{
      */
     @Override
     public int compareTo(Plant o) {
-
-        //TODO by student
+        if (this.getName().equals(o.getName())) {
+            return Integer.compare(this.getAge(), o.getAge());
+        }
+        return Integer.compare(this.getName().compareTo(o.getName()),0);
     }
 }
