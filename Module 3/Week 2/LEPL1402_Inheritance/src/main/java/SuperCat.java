@@ -5,6 +5,7 @@ public class SuperCat extends Cat {
          * TODO : How can you clear the StringBuffer we obtained by inheritance ?
          * ( Super Heroes like SuperCat want to keep their secret actions private )
          */
+        super.clearStringBuilder();
     }
 
 }
