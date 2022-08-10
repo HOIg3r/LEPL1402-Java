@@ -13,8 +13,8 @@
       </plugin>
     </plugins>
   </build>
-  <groupId>LEPL1402_Generics</groupId>
-  <artifactId>LEPL1402_Generics</artifactId>
+  <groupId>LEPL1402_Generics2</groupId>
+  <artifactId>LEPL1402_Generics2</artifactId>
   <version>1.0-SNAPSHOT</version>
   <dependencies>
     <dependency>
@@ -87,11 +87,5 @@
       <scope>system</scope>
       <systemPath>${project.basedir}/libs/junit-4.12.jar</systemPath>
     </dependency>
-      <dependency>
-          <groupId>org.jetbrains</groupId>
-          <artifactId>annotations</artifactId>
-          <version>RELEASE</version>
-          <scope>compile</scope>
-      </dependency>
   </dependencies>
 </project>
