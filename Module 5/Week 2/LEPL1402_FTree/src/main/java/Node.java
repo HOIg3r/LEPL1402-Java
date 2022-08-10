@@ -21,6 +21,6 @@ public class Node<A> extends FTree<A> {
 
     @Override
     public FTree<A> right() {
-        return this.right
+        return this.right;
     }
 }
