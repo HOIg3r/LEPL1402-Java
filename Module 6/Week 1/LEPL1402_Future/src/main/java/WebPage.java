@@ -14,7 +14,8 @@ public class WebPage {
      * Bound executor to a fixed thread pool size
      */
     public WebPage(int threadNumber, HTML html){
-        //TODO
+        executor = Executors.newFixedThreadPool(threadNumber);
+        this.html = html;
     }
 
     /*
@@ -22,7 +23,7 @@ public class WebPage {
      * to be executed by thread pool
      */
     public Future<Image> loadImage(URL url){
-        //TODO
+        return executor.submit(()->downloadImageFromURL(url));
     }
 
     /*
@@ -36,7 +37,11 @@ public class WebPage {
      * Load all images of the page
      */
     public List<Future<Image>> loadImages(List<URL> urls){
-        //TODO
+        List<Future<Image>> temp = new ArrayList<>();
+        for (URL url:urls) {
+            temp.add(loadImage(url));
+        }
+        return temp;
     }
 
     /*
