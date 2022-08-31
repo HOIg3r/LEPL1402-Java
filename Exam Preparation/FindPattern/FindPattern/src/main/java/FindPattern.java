@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class FindPattern {
 
     /**
@@ -23,6 +25,16 @@ public class FindPattern {
      *         sequence or -1 if the pattern is not in the sequence
      */
     public static int find(int [] pattern, int [] sequence) {
-         return 0;
+        int[] patterCopy = pattern.clone();
+        Arrays.sort(patterCopy);
+
+        for (int i = 0; i < sequence.length- pattern.length + 1; i++) {
+            int[] slice = Arrays.copyOfRange(sequence,i,i+pattern.length);
+            Arrays.sort(slice);
+            if (Arrays.equals(slice, patterCopy)){
+                return i;
+            }
+        }
+        return -1;
     }
 }
